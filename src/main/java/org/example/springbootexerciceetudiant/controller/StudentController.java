@@ -65,4 +65,18 @@ public class StudentController {
             return "redirect:/list";
         }
     }
+
+    @GetMapping("/delete/{id}")
+    public String deleteStudent(@PathVariable("id") int id){
+        studentService.deleteStudentById(id);
+        return "redirect:/list";
+    }
+    @GetMapping("/update/{id}")
+    public String updateStudent(@PathVariable("id") int id, Model model){
+        Student student = studentService.getStudentById(id);
+        model.addAttribute("student", student);
+        return "redirect:/registration";
+    }
+
+
 }

@@ -59,5 +59,16 @@ public class StudentService {
         students.put(student.getId(), student);
         return student;
     }
+    public void deleteStudentById(int id) {
+        //Student student = students.get(id);
+        students.remove(id);
+        //return student;
+
+    }
+    public Student updateStudent(Student student) {
+        students.put(student.getId(), student);
+
+        return student;
+    }
 
 }

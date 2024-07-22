@@ -3,13 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Resultat recherche d'un étudiant</title>
+    <span th:replace="~{homePage::bootstrapAndCssImports}"></span>
 </head>
 <body class = "container">
-<header>
-    <h1> Home Page || Les Etudiants</h1>
+<header class="p-3 mb-2 bg-danger-subtle text-danger-emphasis border-end">
+    <h1 class="text-danger mx-auto p-4"> Home Page || Les Etudiants</h1>
+    <nav class="mx-auto p-4 d-flex flex-row-reverse">
+    <div>
+        <a th:href="@{/}" class="text-warning-emphasis text-decoration-none border-end p-2 fw-bolder text-uppercase"> Home Page</a>
+    </div>
+    </nav>
 </header>
 
-<main>
+<main class="p-3 mb-2 bg-body-secondary">
     <p>Nom : <span th:text="${student.getLastName()}"></span></p>
     <p>Prenom : <span th:text="${student.getFirstName()}"></span></p>
     <p>Age : <span th:text="${student.getAge()}"></span></p>

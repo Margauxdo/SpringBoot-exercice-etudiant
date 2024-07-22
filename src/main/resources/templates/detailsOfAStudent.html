@@ -2,17 +2,20 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <span th:replace="~{homePage::bootstrapAndCssImports}"></span>
     <title>Title</title>
 </head>
-<body class = "container">
-<header>
-    <h1> Home Page || Les Etudiants</h1>
+<body class="p-3 mb-2 bg-body-secondary">
+<header class="p-3 mb-2 bg-danger-subtle text-danger-emphasis border-end">
+    <h1 class="text-danger mx-auto p-4"> Home Page || Les Etudiants</h1>
+    <nav class="mx-auto p-4 d-flex flex-row-reverse">
     <div>
-        <a th:href="@{/}"> Home Page</a>
+        <a th:href="@{/}" class="text-warning-emphasis text-decoration-none p-2 fw-bolder text-uppercase"> Home Page</a>
     </div>
     <div>
-        <a th:href="@{/list}"> Liste des étudiants</a>
+        <a th:href="@{/list}" class="text-warning-emphasis text-decoration-none border-end p-2 fw-bolder text-uppercase"> Liste des étudiants</a>
     </div>
+    </nav>
 </header>
 <main>
     <p>Nom : <span th:text="${student.getLastName()}"></span></p>
