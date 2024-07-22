@@ -2,6 +2,7 @@ package org.example.springbootexerciceetudiant.controller;
 
 
 
+import org.example.springbootexerciceetudiant.Service.IStudentService;
 import org.example.springbootexerciceetudiant.Service.StudentService;
 import org.example.springbootexerciceetudiant.model.Student;
 import org.springframework.stereotype.Controller;
@@ -13,9 +14,9 @@ import java.util.Map;
 
 @Controller
 public class StudentController {
-    private final StudentService studentService;
+    private final IStudentService studentService;
 
-    public StudentController(StudentService studentService) {
+    public StudentController(IStudentService studentService) {
         this.studentService = studentService;
 
     }
