@@ -6,8 +6,7 @@ import org.example.springbootexerciceetudiant.Service.StudentService;
 import org.example.springbootexerciceetudiant.model.Student;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +28,7 @@ public class StudentController {
     @GetMapping("/list")
     public String listStudents(Model model){
         List<Student> students = studentService.getAllStudents();
-        model.addAttribute("students", students);
+        model.addAttribute("studentsList", students);
         return "listOfStudents";
     }
 
@@ -38,18 +37,32 @@ public class StudentController {
         model.addAttribute("student", new Student());
         return "registration";
     }
+    @PostMapping("/add")
+    public String addStudent(@ModelAttribute("student") Student student){
+        studentService.saveStudent(student);
+
+        return "redirect:/list";
+    }
 
 
 
 
-    @GetMapping("/search")
+    @GetMapping("/detail/{id}")
+    public String detailStudent(@PathVariable("id") int id, Model model){
+
+        Student student = studentService.getStudentById(id);
+        model.addAttribute("student", student);
+          return "detailsOfAStudent";
+    }
+    @PostMapping("/search")
     public String searchStudent(Model model, @RequestParam String lastName){
         Student student = studentService.getStudentByName(lastName);
+        System.out.println(student);
         if (student != null){
             model.addAttribute("student", student);
-            return "detailsOfAStudent";
+            return "resultSearchAStudent";
         }else{
-            return "listofStudent";
+            return "redirect:/list";
         }
     }
 }

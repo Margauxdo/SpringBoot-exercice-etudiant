@@ -10,12 +10,15 @@ import java.util.Map;
 @Service
 public class StudentService {
 
+    private static int count = 0;
+
     private final Map<Integer, Student> students;
+
     public StudentService() {
         students = new HashMap<>();
 
         Student student1 = Student.builder()
-                .id(1)
+                .id(++count)
                 .firstName("John")
                 .lastName("Doe")
                 .age(25)
@@ -23,7 +26,7 @@ public class StudentService {
                 .build();
 
         Student student2 = Student.builder()
-                .id(2)
+                .id(++count)
                 .firstName("marie")
                 .lastName("Louis")
                 .age(35)
@@ -31,7 +34,7 @@ public class StudentService {
                 .build();
 
         Student student3 = Student.builder()
-                .id(3)
+                .id(++count)
                 .firstName("louis")
                 .lastName("Bertrand")
                 .age(15)
@@ -46,7 +49,15 @@ public class StudentService {
         return students.values().stream().toList();
     }
     public Student getStudentByName(String lastName){
-        return students.values().stream().filter(s -> s.getLastName().equals(lastName)).findFirst().orElse(null);
+        return students.values().stream().filter(s -> s.getLastName().toUpperCase().contains(lastName.toUpperCase())).findFirst().orElse(null);
+    }
+    public Student getStudentById(int id) {
+        return students.get(id);
+    }
+    public Student saveStudent(Student student) {
+        student.setId(++count);
+        students.put(student.getId(), student);
+        return student;
     }
 
 }

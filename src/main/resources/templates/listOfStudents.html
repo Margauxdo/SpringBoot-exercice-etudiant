@@ -5,6 +5,31 @@
     <title>Liste des étudiants</title>
 </head>
 <body class = "container">
+<header>
+    <h1> Home Page || Les Etudiants</h1>
+    <div>
+        <a th:href="@{/}"> Home Page</a>
+    </div>
+</header>
+<main>
+<div>
+    <ul th:if="${!studentsList.isEmpty()}">
+        <li th:each="s : ${studentsList}">
+            <p> Nom : <span th:text="${s.getFirstName()}">
+
+            </span>
+             Prénom : <span th:text="${s.getLastName()}"></span>
+
+            </p>
+            <a th:href="@{/detail/{id}(id=${s.getId()})}">Details</a>
+
+        </li>
+
+
+    </ul>
+
+</div>
+</main>
 
 </body>
 </html>

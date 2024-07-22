@@ -2,18 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Resultat recherche d'un étudiant</title>
 </head>
 <body class = "container">
 <header>
     <h1> Home Page || Les Etudiants</h1>
-    <div>
-        <a th:href="@{/}"> Home Page</a>
-    </div>
-    <div>
-        <a th:href="@{/list}"> Liste des étudiants</a>
-    </div>
 </header>
+
 <main>
     <p>Nom : <span th:text="${student.getLastName()}"></span></p>
     <p>Prenom : <span th:text="${student.getFirstName()}"></span></p>
@@ -22,6 +17,5 @@
 
 
 </main>
-
 </body>
 </html>
