@@ -7,27 +7,31 @@
 </head>
 <body class = "container">
 <header class="p-3 mb-2 bg-danger-subtle text-danger-emphasis border-end">
-    <h1 class="text-danger mx-auto p-4"> Home Page || Les Etudiants</h1>
-    <nav class="mx-auto p-4 d-flex flex-row-reverse">
+    <span th:replace="~{homePage::title}"></span>
+    <th:block th:fragment="nav">
+    <nav class="mx-auto p-4 d-flex flex-row-reverse border-bottom border-secondary">
     <div>
         <a th:href="@{/}" class="text-warning-emphasis text-decoration-none border-end p-2 fw-bolder text-uppercase"> Home Page</a>
     </div>
     </nav>
+    </th:block>
 </header>
-<main class="p-3 mb-2 bg-body-secondary p-3 mb-2 bg-body-secondary">
-<div>
-    <ul th:if="${!studentsList.isEmpty()}">
-        <li th:each="s : ${studentsList}">
+<main >
+<div class="position-relative">
+    <ul th:if="${!studentsList.isEmpty()}" class="list-group border border-0">
+        <li th:each="s : ${studentsList}" class="list-group-item border border-0 ">
             <p> Nom : <span th:text="${s.getFirstName()}">
 
             </span>
              Prénom : <span th:text="${s.getLastName()}"></span>
 
             </p>
-            <a th:href="@{/detail/{id}(id=${s.getId()})}" class="btn btn-danger text-decoration-none">Details</a>
+            <div class="position-absolute top-50 end-0 translate-middle-y">
+
+            <a th:href="@{/detail/{id}(id=${s.getId()})}" class="btn btn-danger text-decoration-none " >Details</a>
             <a th:href="@{/update/{id}(id=${s.getId()})}" class="btn btn-danger text-decoration-none">Modifier</a>
             <a th:href="@{/delete/{id}(id=${s.getId()})}" class="btn btn-danger text-decoration-none">Supprimer</a>
-
+            </div>
         </li>
 
 

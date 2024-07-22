@@ -7,22 +7,18 @@
 </head>
 <body class = "container">
 <header class="p-3 mb-2 bg-danger-subtle text-danger-emphasis border-end">
-    <h1 class="text-danger mx-auto p-4"> Home Page || Les Etudiants</h1>
-    <nav class="mx-auto p-4 d-flex flex-row-reverse">
-    <div>
-        <a th:href="@{/}" class="text-warning-emphasis text-decoration-none border-end p-2 fw-bolder text-uppercase"> Home Page</a>
-    </div>
-    </nav>
+    <span th:replace="~{homePage::title}"></span>
+    <span th:replace="~{listOfStudents::nav}"></span>
 </header>
-<main class="p-3 mb-2 bg-body-secondary">
-    <form th:action="@{/add}" method="post"  th:object="${student}">
+<main >
+    <form th:action="@{/add}" method="post"  th:object="${student}" class="border border-danger rounded mx-auto p-4">
         <input th:field="*{id}" hidden>
         <div class="mb-3">
             <label for="lastName" class="form-label fst-italic">Nom de l'étudiant</label>
             <input type="text" class="form-control" id="lastName" name="lastName">
 
         </div>
-        <div class="mb-3">
+        <div class="mb-3 ">
             <label for="firstName" class="form-label fst-italic">Prénom de l'étudiant</label>
             <input type="text" class="form-control" id="firstName" name="firstName">
         </div>
@@ -34,7 +30,9 @@
             <label for="email" class="form-label fst-italic">Email de l'étudiant</label>
             <input type="email" class="form-control" id="email" name="email">
         </div>
-        <button type="submit" class="btn btn-outline-danger">Envoyer</button>
+        <div class="d-flex flex-row mb-3">
+        <button type="submit" class="btn btn-outline-danger p-2">Envoyer</button>
+        </div>
     </form>
 </main>
 
