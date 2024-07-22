@@ -66,7 +66,12 @@ public class StudentService {
 
     }
     public Student updateStudent(Student student) {
-        students.put(student.getId(), student);
+        getStudentByName(student.getLastName()).setFirstName(student.getFirstName());
+        getStudentByName(student.getLastName()).setLastName(student.getLastName());
+        getStudentByName(student.getFirstName()).setAge(student.getAge());
+        getStudentByName(student.getLastName()).setEmail(student.getEmail());
+        getStudentByName(student.getFirstName()).setId(student.getId());
+
 
         return student;
     }

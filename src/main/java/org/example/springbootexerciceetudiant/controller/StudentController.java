@@ -71,11 +71,19 @@ public class StudentController {
         studentService.deleteStudentById(id);
         return "redirect:/list";
     }
+
     @GetMapping("/update/{id}")
     public String updateStudent(@PathVariable("id") int id, Model model){
         Student student = studentService.getStudentById(id);
         model.addAttribute("student", student);
-        return "redirect:/registration";
+        return "registration";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateStudent(@ModelAttribute("student") Student student){
+
+        studentService.updateStudent(student);
+        return "redirect:/list";
     }
 
 
