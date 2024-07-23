@@ -23,7 +23,7 @@ public class Student {
     private int age;
     @NotNull(message = " Ce champ doit être rempli")
     @NotBlank
-    //@Pattern(regexp = "[\\w]+")
+    @Pattern(regexp = "[\\w]+")
     private String email;
 
 }
