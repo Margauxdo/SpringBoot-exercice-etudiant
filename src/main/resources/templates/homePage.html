@@ -10,8 +10,10 @@
 </head>
 <body class = "container">
 <header class="p-3 mb-2 bg-danger-subtle text-danger-emphasis border-end">
-    <h1 class="text-danger mx-auto p-4" > Home Page || Les Etudiants</h1>
-    <nav class="mx-auto p-4 d-flex flex-row-reverse">
+    <th:block th:fragment="title">
+    <h1 class="text-danger mx-auto p-4 text-center " > Home Page || Les Etudiants</h1>
+    </th:block>
+    <nav class="mx-auto p-4 d-flex flex-row-reverse border-bottom border-secondary">
         <div>
             <a th:href="@{/list}" class="text-warning-emphasis text-decoration-none border-end p-2 fw-bolder text-uppercase"> Liste des étudiants</a>
         </div>
@@ -22,10 +24,10 @@
 
     </nav>
 </header>
-<main class="p-3 mb-2 bg-body-secondary">
+<main >
 
     <div>
-        <nav class="navbar bg-body-tertiary">
+        <nav class="navbar ">
             <div class="container-fluid">
                 <form th:action="@{/search}"  method="post" class="d-flex" role="search" >
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="lastName">
