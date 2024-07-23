@@ -2,12 +2,17 @@ package org.example.springbootexerciceetudiant.controller;
 
 
 
+import jakarta.validation.Valid;
 import org.example.springbootexerciceetudiant.Service.IStudentService;
 import org.example.springbootexerciceetudiant.Service.StudentService;
 import org.example.springbootexerciceetudiant.model.Student;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpStatusCodeException;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Map;
@@ -39,10 +44,24 @@ public class StudentController {
         return "registration";
     }
     @PostMapping("/add")
-    public String addStudent(@ModelAttribute("student") Student student){
-        studentService.saveStudent(student);
+    public String addStudent(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
 
-        return "redirect:/list";
+            return "registration";
+        }else {
+            studentService.saveStudent(student);
+
+            return "registrationSuccess";
+        }
+
+
+    }
+    @GetMapping("/pb")
+    public String errorPage(){
+        if (true){
+            throw new ResponseStatusException(HttpStatus.I_AM_A_TEAPOT);
+        }
+        return "registration";
     }
 
 

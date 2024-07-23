@@ -19,20 +19,24 @@
         <input th:field="*{id}" hidden>
         <div class="mb-3">
             <label for="lastName" class="form-label fst-italic">Nom de l'étudiant</label>
-            <input type="text" class="form-control" id="lastName" name="lastName">
+            <input type="text" class="form-control" id="lastName" name="lastName" th:field="*{lastName}">
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
 
         </div>
         <div class="mb-3">
             <label for="firstName" class="form-label fst-italic">Prénom de l'étudiant</label>
-            <input type="text" class="form-control" id="firstName" name="firstName">
+            <input type="text" class="form-control" id="firstName" name="firstName" th:field="*{firstName}">
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
         </div>
         <div class="mb-3 ">
             <label for="age" class="form-label fst-italic">Age de l'étudiant</label>
-            <input type="text" class="form-control" id="age" name="age">
+            <input type="text" class="form-control" id="age" name="age" th:field="*{age}">
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
         </div>
         <div class="mb-3 ">
             <label for="email" class="form-label fst-italic">Email de l'étudiant</label>
-            <input type="email" class="form-control" id="email" name="email">
+            <input type="email" class="form-control" id="email" name="email" th:field="*{email}">
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
         <button type="submit" class="btn btn-outline-danger">Envoyer</button>
     </form>
